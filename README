@@ -1,0 +1,18 @@
+Author: Michael Schmitz
+
+The vim files for my vim installation.  Includes:
+
+Syntax highlighting:
+    1.  scala
+
+Compiler support:
+    1.  maven
+    2.  scala compiler (scalac)
+    3.  scala interpreter (scala)
+
+Code formatting:
+    1.  scala (scalariform)
+    2.  xml (xmllint -- external dependency)
+
+Plugins:
+    1.  Command-T (requires make in ruby/command-t)
