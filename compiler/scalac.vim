@@ -1,0 +1,1 @@
+/homes/gws/schmmd/hack/conf/vim/compiler/scalac.vim
