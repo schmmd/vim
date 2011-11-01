@@ -3,6 +3,8 @@
 "
 "
 
+call pathogen#infect()
+
 " disable old vi options in favor of vim options
 set nocompatible 
 
@@ -33,14 +35,14 @@ set undodir=$HOME/.vimfiles/undo " location for persistant undos
 set directory=$HOME/.vimfiles/temp,tmp " location for swap
 
 " regenerate ctags
-map <LEADER>g :w<CR>:!sh -xc 'ctags -R'<CR>
+nnoremap <LEADER>g :w<CR>:!sh -xc 'ctags -R'<CR>
 " set ctags folders
 set tags=./tags,tags
 
 " indent/format entire file, retaining cursor position
 " http://stackoverflow.com/q/7933015/568393
-nmap <LEADER>i mmgg=G'm^
-nmap <LEADER>f mmgggqG'm^
+nnoremap <LEADER>i mmgg=G'm^
+nnoremap <LEADER>f mmgggqG'm^
 
 " scala mappings
 augroup scala 
@@ -55,10 +57,10 @@ fun! IfPomXmlExists()
     compiler maven
     " create a package
     " useful because it will also run the test suite--unlike :make
-    map <LEADER>p :w<CR>:!sh -xc 'mvn package'<CR>
+    nnoremap <LEADER>p :w<CR>:!sh -xc 'mvn package'<CR>
     " download all dependency sources
     " useful for generating ctags over dependencies
-    map <LEADER>d :w<CR>:!sh -xc 'mvn dependency:unpack-dependencies -Dclassifier=sources -Dmdep.failOnMissingClassifierArtifact=false'<CR>
+    nnoremap <LEADER>d :w<CR>:!sh -xc 'mvn dependency:unpack-dependencies -Dclassifier=sources -Dmdep.failOnMissingClassifierArtifact=false'<CR>
   endif
 endfun
 augroup pomxml
