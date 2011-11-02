@@ -8,4 +8,6 @@ endif
 let current_compiler = "maven"
 
 set makeprg=mvn\ clean\ compile
-set errorformat=\[ERROR]\ %f:%l:\ %m,%-G%.%#
+set errorformat=%E\[ERROR]\ %f:%l:\ %m,%-Z\[INFO]\ %p^,%-C\[INFO]\ %.%#,
+    \%E\[ERROR]\ %f:\[%l\\,%c]\ %m,
+    \%-G%.%#
