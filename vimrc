@@ -69,11 +69,14 @@ augroup pomxml
 augroup END
 
 " use scalariform to format scala code
-au BufEnter *.scala setl formatprg=scala\ -cp\ $HOME/.vim/scalariform_2.9.1-0.1.1.jar\ scalariform.commandline.Main\ --forceOutput
+au BufEnter *.scala setl formatprg=java\ -jar\ $HOME/.vim/scala/scalariform.jar\ --stdin\ --forceOutput
 
 " indent/format xml file
 autocmd FileType xml set equalprg=xmllint\ --format\ -
 autocmd FileType xml set formatprg=xmllint\ --format\ -
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
 
 " always add the current file's directory to the path if not already there
 autocmd BufRead *
