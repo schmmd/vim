@@ -1,4 +1,4 @@
-" 
+"
 " Maintainer: Michael Schmitz
 "
 "
@@ -6,7 +6,7 @@
 call pathogen#infect()
 
 " disable old vi options in favor of vim options
-set nocompatible 
+set nocompatible
 
 set autoindent
 set expandtab
@@ -14,10 +14,10 @@ set shiftwidth=4
 set tabstop=4
 
 syntax on " enable syntax highlighting
-set history=50 " keep 50 lines of command line history 
-set ruler " show the cursor position all the time 
+set history=50 " keep 50 lines of command line history
+set ruler " show the cursor position all the time
 set showcmd " display incomplete commands in the lower-right
-set incsearch " do incremental searching 
+set incsearch " do incremental searching
 set nohlsearch " don't highlight search matches
 set noerrorbells
 set vb t_vb= " disable visual bell
@@ -44,8 +44,11 @@ set tags=./tags,tags
 nnoremap <LEADER>i mmgg=G'm^
 nnoremap <LEADER>f mmgggqG'm^
 
+" remove trailing spaces
+nnoremap <silent> <LEADER>s :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
 " scala mappings
-augroup scala 
+augroup scala
   au FileType scala compiler scalai
   au FileType scala set tabstop=2
   au FileType scala set shiftwidth=2
