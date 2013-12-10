@@ -47,6 +47,10 @@ nnoremap <LEADER>f mmgggqG'm^
 " remove trailing spaces
 nnoremap <silent> <LEADER>s :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
+" filetype settings
+filetype indent on
+filetype plugin on
+
 " scala mappings
 augroup scala
   au FileType scala compiler scalai
