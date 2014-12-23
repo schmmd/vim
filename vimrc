@@ -75,6 +75,9 @@ augroup pomxml
   au BufRead * call IfPomXmlExists()
 augroup END
 
+" markdown settings
+let g:vim_markdown_folding_disabled=1
+
 " use scalariform to format scala code
 au BufEnter *.scala setl formatprg=java\ -jar\ $HOME/.vim/scala/scalariform.jar\ --stdin\ --forceOutput
 
