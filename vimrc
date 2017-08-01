@@ -3,7 +3,8 @@
 "
 "
 
-call pathogen#infect()
+" Allow backspace to move up a line
+set backspace=indent,eol,start
 
 " disable old vi options in favor of vim options
 set nocompatible
@@ -58,23 +59,6 @@ augroup scala
   au FileType scala set shiftwidth=2
 augroup END
 
-" maven mappings
-fun! IfPomXmlExists()
-  if file_readable("pom.xml")
-    compiler maven
-    " create a package
-    " useful because it will also run the test suite--unlike :make
-    nnoremap <LEADER>p :w<CR>:!sh -xc 'mvn package'<CR>
-    " download all dependency sources
-    " useful for generating ctags over dependencies
-    nnoremap <LEADER>d :w<CR>:!sh -xc 'mvn dependency:unpack-dependencies -Dclassifier=sources -Dmdep.failOnMissingClassifierArtifact=false'<CR>
-  endif
-endfun
-augroup pomxml
-  au!
-  au BufRead * call IfPomXmlExists()
-augroup END
-
 " markdown settings
 let g:vim_markdown_folding_disabled=1
 
@@ -87,9 +71,3 @@ autocmd FileType xml set formatprg=xmllint\ --format\ -
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-
-" always add the current file's directory to the path if not already there
-autocmd BufRead *
-  \ let s:tempPath=escape(escape(expand("%:p:h"), ', '), ',\ ') . "**" |
-  \ exec "set path-=".s:tempPath |
-  \ exec "set path+=".s:tempPath
